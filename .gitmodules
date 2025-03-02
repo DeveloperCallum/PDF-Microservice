@@ -1,0 +1,12 @@
+[submodule "PDF-React"]
+	path = PDF-React
+	url = https://github.com/DeveloperCallum/PDF-React
+[submodule "PDF-ImageService"]
+	path = PDF-ImageService
+	url = https://github.com/DeveloperCallum/PDF-ImageService
+[submodule "PDF-Graylog"]
+	path = PDF-Graylog
+	url = https://github.com/DeveloperCallum/PDF-Graylog
+[submodule "PDF-Nginx"]
+	path = PDF-Nginx
+	url = https://github.com/DeveloperCallum/PDF-Nginx
