@@ -1,0 +1,41 @@
+services:
+  openobserve:
+    extends:
+      file: ./PDF-Openobserve/docker-compose.yml
+      service: openobserve
+    networks:
+      - microservice
+
+  react:
+    build:
+      context: ./PDF-React # Specify the directory containing your Dockerfile
+      dockerfile: .dockerfile # Dockerfile name (defaults to `Dockerfile`)
+    networks:
+      - microservice
+
+  nginx:
+    build:
+      context: ./PDF-Nginx # Specify the directory containing your Dockerfile
+      dockerfile: .dockerfile # Dockerfile name (defaults to `Dockerfile`)
+    networks:
+      - microservice
+    ports:
+      - "8080:8080"  # Map container port 8080 to host port 8080
+      - "80:80"  # Map container port 8080 to host port 8080
+    restart: unless-stopped
+    depends_on:
+      - react
+      - image_service
+
+  image_service:
+    build:
+      context: ./PDF-ImageService # Specify the directory containing your Dockerfile
+      dockerfile: .dockerfile # Dockerfile name (defaults to `Dockerfile`)
+    networks:
+      - microservice
+
+networks:
+  microservice:
+
+volumes:
+  openobserve_data:

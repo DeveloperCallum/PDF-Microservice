@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  openobserve:
+    image: public.ecr.aws/zinclabs/openobserve:latest
+    container_name: openobserve
+    restart: unless-stopped
+    environment:
+      ZO_ROOT_USER_EMAIL: "admin@example.com"  # Replace with your actual email
+      ZO_ROOT_USER_PASSWORD: "StrongPassword123!"  # Use a secure password
+      ZO_INGEST_ALLOWED_UPTO: "48"
+      ZO_PAYLOAD_LIMIT: "2000000000"
+      ZO_JSON_LIMIT: "2000000000"
+    ports:
+      - "5080:5080"
+    volumes:
+      - openobserve_data:/data
+
+volumes:
+  openobserve_data:
